@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<div class="container clearfix">        
+        <div class='assets size_400' style="width:20000px;">
+          <div id="assets_wrap">            
+            {% for post in site.posts %}
+              {% if post.categories contains 'art' or post.categories contains 'marketing' or post.categories contains 'feature'%}
+                {% if post.categories contains 'video' %}               
+                  <div class='asset video'>
+                    <div class="wrap">
+                      <div class="embed_container">
+                        {% if post.categories contains 'vimeo' %}<div class='vimeo_cont preview'>{% elsif post.categories contains 'youtube' %}<div class='youtube_cont preview'>{% endif %}<img src='{{post.image}}'><a class='load_iframe' href='{{post.video_url}}?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1'></a>
+                        </div>
+                      </div>  
+                      <div class='copy'><p>{{post.title}}<i>{{post.content}}</i></p></div>
+                    </div>  
+                  </div>
+                  {% elsif post.categories contains 'photo' %}
+                  <div class="asset image">
+                    <div class="wrap">
+                      <div class="img">
+                        <img src='{{post.image}}' lazyloaded="true"/>
+                      </div>
+                      <div class='image_text_container'>{{post.title}}</div>
+                    </div>
+                  </div>
+                  {% endif %}
+                {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+</div>
